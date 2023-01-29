@@ -46,18 +46,18 @@ def login_request(url, data, proxy, success_grep, url_for_extract):
         if response.status_code == 200:
             match = re.search(success_grep, response.text)
             if match:
-                print("[+] Successful Grep Login found!")
+                print("[+] Successful Login! " + data['username'] + ":" + data['password'])
                 response2 = session.get(url_for_extract, proxies=proxy)
                 match2 = re.search(data["extractgroup1_grep"], response2.text)
                 if match2:
                     value = match2.group(1)
                     with open("success_log.txt", "a") as log_file:
                         log_file.write(f"username: {data['username']}, password: {data['password']}, value: {value}\n")
-                    print(f"Value {value} found and logged.")
+                    #print(f"Value {value} found and logged.")
                 else:
                     print("extractgroup1_grep not found.")
-            else:
-                print("Welcome message not found.")
+#            else:
+#                print("Welcome message not found.")
         else:
             print("Request failed with status code:", response.status_code)
     except requests.exceptions.RequestException as e:
