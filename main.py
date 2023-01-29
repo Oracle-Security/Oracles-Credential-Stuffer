@@ -26,8 +26,9 @@ print("""
 print("Oracle's Credential Stuffer")
 print("A Multi-threaded Credential Stuffer built-in with readable profiles and proxies, along with an easy way to check for successful logins, and then grep for the data you want to extract.")
 print("Have a feature request? Post an issue and I may add it.")
+print("Usage: python main.py profiles/example.json")
 
-num_threads = 1
+num_threads = 50
 
 parser = argparse.ArgumentParser()
 parser.add_argument("profile", help="Name of the profile to use")
