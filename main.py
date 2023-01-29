@@ -52,7 +52,7 @@ def login_request(url, data, proxy, success_grep, url_for_extract):
                 if match2:
                     value = match2.group(1)
                     with open("success_log.txt", "a") as log_file:
-                        log_file.write(f"username: {data['username']}, password: {data['password']}, value: {value}\n")
+                        log_file.write(f"{data['username']},{data['password']},{value}\n") #csv format.
                     #print(f"Value {value} found and logged.")
                 else:
                     print("extractgroup1_grep not found.")
