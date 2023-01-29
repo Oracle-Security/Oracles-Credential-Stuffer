@@ -1,0 +1,6 @@
+{
+    "url": "https://www.example.com/login",
+    "success_grep": "Welcome",
+    "extractgroup1_grep":"(?<=\\$)\\d+",
+    "url_for_extract":"https://www.example.com/dashboard"
+}
