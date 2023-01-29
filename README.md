@@ -1,4 +1,4 @@
-# Oracles-Credential-Stuffer
+# Oracle's Credential Stuffer
 A multi-threaded python script for credential stuffing that makes use of loadable profiles, it also has capabilities to extract a group from grep upon successful login. Additionally, it has capabilities to load proxies into the application so all requests are routed differently. That way you do not get IP banned.
 
 # DISCLAIMER
