@@ -26,12 +26,12 @@ print("""
 print("Oracle's Credential Stuffer")
 print("A Multi-threaded Credential Stuffer built-in with readable profiles and proxies, along with an easy way to check for successful logins, and then grep for the data you want to extract.")
 print("Have a feature request? Post an issue and I may add it.")
-print("Usage: python main.py profiles/example.json")
-
+print("Usage: python main.py example #####Set Thread Count Below if you want it changed. Proxy can be turned to false if you don't want to use one.")
 num_threads = 50
 
 parser = argparse.ArgumentParser()
 parser.add_argument("profile", help="Name of the profile to use")
+parser.add_argument('--proxy', default=True, action='store_true')
 args = parser.parse_args()
 
 with open(f"profiles/{args.profile}.json", "r") as f:
@@ -85,9 +85,12 @@ credentials = [credential.strip().split(":") for credential in credentials]
 
 
 with open("proxies.txt") as f:
-    proxies = f.readlines()
-    proxies = [proxy.strip() for proxy in proxies]
-    proxies = [{"http": f"https://{proxy}"} for proxy in proxies]
+    if not args.proxy == False:
+        proxies = f.readlines()
+        proxies = [proxy.strip() for proxy in proxies]
+        proxies = [{"http": f"https://{proxy}"} for proxy in proxies]
+    else:
+        proxies = None
 
 #If you just use 1 proxy because your megaproxy automatically gives you an IP or URL, then you can just get rid of this and define it as a variable.
 #Otherwise it will work as is.
